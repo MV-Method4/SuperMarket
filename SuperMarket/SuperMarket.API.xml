@@ -48,6 +48,13 @@
             <returns>IEnumerable Object of ProductResource</returns>
             <response code ="200">List of product details</response>        
         </member>
+        <member name="M:SuperMarket.API.Controllers.ProductsController.GetProductByIdAsync(System.Int32)">
+            <summary>
+            Get Products By Id
+            </summary>
+            <returns>IEnumerable Object of ProductResource</returns>
+            <response code ="200">ProductResource</response>        
+        </member>
         <member name="T:SuperMarket.API.Domain.Models.Product">
             <summary>
             Product Resource Object

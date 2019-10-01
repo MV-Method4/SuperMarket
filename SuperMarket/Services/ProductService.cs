@@ -27,6 +27,17 @@ namespace SuperMarket.API.Services
             return await _productRepository.ListAsync();
         }
 
+        public async Task<ProductResponse> Get_Product_ByID(int id)
+        {
+            var existingProduct = await _productRepository.FindByIdAsync(id);
+
+            if (existingProduct == null)
+                return new ProductResponse($"Product with {id.ToString("#0#")} not found!");
+
+            return new ProductResponse(existingProduct);
+
+        }
+
         public async Task<ProductResponse> SaveAsync(Product product)
         {
             try

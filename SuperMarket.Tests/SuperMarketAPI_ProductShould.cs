@@ -157,6 +157,79 @@ namespace SuperMarket.Tests
 
         }
 
+
+        [Fact]
+        public async Task GET_OKResult_ProductByID()
+        {
+            var product = OneProduct();
+            var productResponse = new ProductResponse(product);
+
+            var productService = new Mock<IProductService>();
+            productService.Setup(x => x.Get_Product_ByID(product.Id)).ReturnsAsync(productResponse);
+
+            var sut_productController = new ProductsController(productService.Object, BuildMapper());
+
+            var result = await sut_productController.GetProductByIdAsync(product.Id) as OkObjectResult;
+
+            Assert.IsType<OkObjectResult>(result);
+
+        }
+
+        [Fact]
+        public async Task GET_OKResult_ProductByID_ValidProduct()
+        {
+            var product = OneProduct();
+            var productResponse = new ProductResponse(product);
+
+            var productService = new Mock<IProductService>();
+            productService.Setup(x => x.Get_Product_ByID(product.Id)).ReturnsAsync(productResponse);
+
+            var sut_productController = new ProductsController(productService.Object, BuildMapper());
+
+            var result = await sut_productController.GetProductByIdAsync(product.Id) as OkObjectResult;
+
+            var productResult = result.Value as ProductResource;
+
+            Assert.Equal(product.Id, productResult.Id);
+
+        }
+
+        [Fact]
+        public async Task GET_BadResult_ProductByID_InvalidProduct()
+        {
+            var product = OneProduct();
+            string errMsg = "Invalid Product ID";
+            var productResponse = new ProductResponse(errMsg);
+
+            var productService = new Mock<IProductService>();
+            productService.Setup(x => x.Get_Product_ByID(product.Id)).ReturnsAsync(productResponse);
+
+            var sut_productController = new ProductsController(productService.Object, BuildMapper());
+
+            var result = await sut_productController.GetProductByIdAsync(product.Id) as BadRequestObjectResult;
+
+            Assert.IsType<BadRequestObjectResult>(result);
+
+        }
+
+        [Fact]
+        public async Task GET_BadResult_ProductByID_InvalidProduct_ErrorMsgMatch()
+        {
+            var product = OneProduct();
+            string errMsg = "Invalid Product ID";
+            var productResponse = new ProductResponse(errMsg);
+
+            var productService = new Mock<IProductService>();
+            productService.Setup(x => x.Get_Product_ByID(product.Id)).ReturnsAsync(productResponse);
+
+            var sut_productController = new ProductsController(productService.Object, BuildMapper());
+
+            var result = await sut_productController.GetProductByIdAsync(product.Id) as BadRequestObjectResult;
+
+            Assert.Equal(errMsg, result.Value);
+
+        }
+
         #endregion
 
         #region POST_EndPoint
