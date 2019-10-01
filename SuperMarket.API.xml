@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SuperMarket.API</name>
+    </assembly>
+    <members>
+        <member name="M:SuperMarket.API.Controllers.CategoriesController.GetAllAsync">
+            <summary>
+            Get all categories.
+            </summary>
+            <returns>IEnumerable CategoryRosource</returns>
+        </member>
+        <member name="M:SuperMarket.API.Controllers.CategoriesController.PostAsync(SuperMarket.API.Resources.SaveCategoryResource)">
+            <summary>
+            Add new category item.
+            </summary>
+            <param name="resource">Category Object containing new details</param>
+            <returns>IActionResult of CategoryReource</returns>
+            <response code="400">Missing category object details</response>
+            <response code="406">Not saved</response>
+            <response code="200">New Category added</response>
+        </member>
+        <member name="M:SuperMarket.API.Controllers.CategoriesController.PutAsync(System.Int32,SuperMarket.API.Resources.SaveCategoryResource)">
+            <summary>
+            Update a category item.
+            </summary>
+            <param name="id">ID of category item to be amended</param>
+            <param name="resource">Category Object containing new details</param>
+            <returns>IActionResult of CategoryReource</returns>
+            <response code="400">Missing category object details</response>
+            <response code="406">Not saved</response>
+            <response code="200">New Category Details saved</response>
+        </member>
+        <member name="M:SuperMarket.API.Controllers.CategoriesController.DeleteAsync(System.Int32)">
+            <summary>
+            Delete Category
+            </summary>
+            <param name="id">id of category to be deleted</param>
+            <returns>IAction Result of object CategoryResource</returns>
+            <response code="404">No Category found with specified id</response>
+            <response code="406">Not saved</response>
+            <response code="200">Category Deleted</response>
+        </member>
+        <member name="M:SuperMarket.API.Controllers.ProductsController.GetAllAsync">
+            <summary>
+            Get all Products
+            </summary>
+            <returns>IEnumerable Object of ProductResource</returns>
+            <response code ="200">List of product details</response>        
+        </member>
+        <member name="T:SuperMarket.API.Domain.Models.Product">
+            <summary>
+            Product Resource Object
+            </summary>
+        </member>
+        <member name="P:SuperMarket.API.Domain.Models.Product.Id">
+            <summary>
+            Id of Product
+            </summary>
+        </member>
+        <member name="P:SuperMarket.API.Domain.Models.Product.Name">
+            <summary>
+            Name of Product
+            </summary>
+        </member>
+        <member name="P:SuperMarket.API.Domain.Models.Product.QuantityInPackage">
+            <summary>
+            Quantity In Package
+            </summary>
+        </member>
+        <member name="P:SuperMarket.API.Domain.Models.Product.UnitOfMeasurement">
+            <summary>
+            Unit of Measure  
+            Range from 1 to 5  
+                1 = UN  
+                2 = MG  
+                3 = G  
+                4 = KG  
+                5 = L  
+            </summary>
+        </member>
+        <member name="P:SuperMarket.API.Domain.Models.Product.CategoryId">
+            <summary>
+            Id of category the product is in
+            </summary>
+        </member>
+        <member name="M:SuperMarket.API.Domain.Services.Communication.CategoryResponse.#ctor(SuperMarket.API.Domain.Models.Category)">
+            <summary>
+            Creates a success response.
+            </summary>
+            <param name="category">Saved category</param>
+            <return>Response.</return>
+        </member>
+        <member name="M:SuperMarket.API.Domain.Services.Communication.CategoryResponse.#ctor(System.String)">
+            <summary>
+            Creates an error response.
+            </summary>
+            <param name="message">Error message.</param>
+            <return>Response.</return>
+        </member>
+        <member name="M:SuperMarket.API.Domain.Services.Communication.ProductResponse.#ctor(SuperMarket.API.Domain.Models.Product)">
+            <summary>
+            Creates a success response.
+            </summary>
+            <param name="product">Saved product</param>
+            <return>Response.</return>
+        </member>
+        <member name="M:SuperMarket.API.Domain.Services.Communication.ProductResponse.#ctor(System.String)">
+            <summary>
+            Creates an error response.
+            </summary>
+            <param name="message">Error message.</param>
+            <return>Response.</return>
+        </member>
+        <member name="T:SuperMarket.API.Extensions.ODataParametersSwaggerDefinition">
+            <summary>
+            This class allows us to add OData to our endpoints in swagger.
+            </summary>
+        </member>
+        <member name="T:SuperMarket.API.Resources.CategoryResource">
+            <summary>
+            Category Details
+            </summary>
+        </member>
+        <member name="P:SuperMarket.API.Resources.CategoryResource.Id">
+            <summary>
+            Id of category
+            </summary>
+        </member>
+        <member name="P:SuperMarket.API.Resources.CategoryResource.Name">
+            <summary>
+            name of category
+            </summary>
+        </member>
+    </members>
+</doc>
