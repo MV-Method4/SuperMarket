@@ -47,17 +47,17 @@ namespace SuperMarket.API.Controllers
         /// </summary>
         /// <returns>IEnumerable Object of ProductResource</returns>
         /// <response code ="200">ProductResource</response>        
-        [HttpGet]
+        [HttpGet("{id}")]
         [EnableQuery()]
         public async Task<IActionResult> GetProductByIdAsync(int id)
         {
             var result = await _productService.Get_Product_ByID(id);
-            if(!result.Success)
+            if (!result.Success)
                 return BadRequest(result.Message);
 
             var productResource = _mapper.Map<Product, ProductResource>(result.Product);
             return Ok(productResource);
-            
+
         }
 
         [HttpPost]

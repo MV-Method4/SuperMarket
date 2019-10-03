@@ -94,10 +94,12 @@ namespace SuperMarket
 
             services.AddScoped<ICategoryRespository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IFeedbackRepository, FeedbackRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IFeedbackService, FeedbackService>();
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -184,7 +186,7 @@ namespace SuperMarket
                     "/swagger/SuperMarketAPISpecification/swagger.json",
                     "SuperMarket API");
 
-                //setupAction.RoutePrefix = "";
+                setupAction.RoutePrefix = "";
             });
 
             app.UseStaticFiles();

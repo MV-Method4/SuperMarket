@@ -70,6 +70,11 @@
             Name of Product
             </summary>
         </member>
+        <member name="P:SuperMarket.API.Domain.Models.Product.Price">
+            <summary>
+            Price of Product
+            </summary>
+        </member>
         <member name="P:SuperMarket.API.Domain.Models.Product.QuantityInPackage">
             <summary>
             Quantity In Package
@@ -91,6 +96,31 @@
             Id of category the product is in
             </summary>
         </member>
+        <member name="P:SuperMarket.API.Domain.Models.Product.ImageThumbUrl">
+            <summary>
+            Url string address of product thumb nail
+            </summary>
+        </member>
+        <member name="P:SuperMarket.API.Domain.Models.Product.ImageUrl">
+            <summary>
+            Url string address of product full size image
+            </summary>
+        </member>
+        <member name="P:SuperMarket.API.Domain.Models.Product.IsProductOfTheWeek">
+            <summary>
+            set if product is product of the week
+            </summary>
+        </member>
+        <member name="P:SuperMarket.API.Domain.Models.Product.ShortDescription">
+            <summary>
+            Short Description of the Product
+            </summary>
+        </member>
+        <member name="P:SuperMarket.API.Domain.Models.Product.LongDescription">
+            <summary>
+            Long Description of the Product
+            </summary>
+        </member>
         <member name="M:SuperMarket.API.Domain.Services.Communication.CategoryResponse.#ctor(SuperMarket.API.Domain.Models.Category)">
             <summary>
             Creates a success response.
@@ -99,6 +129,20 @@
             <return>Response.</return>
         </member>
         <member name="M:SuperMarket.API.Domain.Services.Communication.CategoryResponse.#ctor(System.String)">
+            <summary>
+            Creates an error response.
+            </summary>
+            <param name="message">Error message.</param>
+            <return>Response.</return>
+        </member>
+        <member name="M:SuperMarket.API.Domain.Services.Communication.FeedbackResponse.#ctor(SuperMarket.API.Domain.Models.Feedback)">
+            <summary>
+            Creates a success response.
+            </summary>
+            <param name="feedback">Saved Feedback</param>
+            <return>Response.</return>
+        </member>
+        <member name="M:SuperMarket.API.Domain.Services.Communication.FeedbackResponse.#ctor(System.String)">
             <summary>
             Creates an error response.
             </summary>

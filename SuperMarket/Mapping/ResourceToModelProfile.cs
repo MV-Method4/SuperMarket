@@ -16,6 +16,7 @@ namespace SuperMarket.API.Mapping
         {
             CreateMap<SaveCategoryResource, Category>();
             CreateMap<SaveProductResource, Product>();
+            CreateMap<SaveFeedbackResource, Feedback>();
         }
     }
 }
