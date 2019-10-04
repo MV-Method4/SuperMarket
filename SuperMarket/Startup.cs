@@ -87,7 +87,8 @@ namespace SuperMarket
 
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseInMemoryDatabase("SuperMarket-API-In-Memory");
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                //options.UseInMemoryDatabase("SuperMarket-API-In-Memory");
             });
 
             services.AddOData();

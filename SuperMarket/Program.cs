@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
+using SuperMarket.API.Domain.Models;
 using SuperMarket.API.Persistence.Contexts;
 
 namespace SuperMarket
@@ -19,10 +19,22 @@ namespace SuperMarket
         {
             var host = BuildWebHost(args);
             using (var scope = host.Services.CreateScope())
-            using (var context = scope.ServiceProvider.GetService<AppDbContext>())
             {
-                context.Database.EnsureCreated();
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<AppDbContext>();
+                    DbInitialiser.Seed(context);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.ToString());
+                }
             }
+            //using (var context = scope.ServiceProvider.GetService<AppDbContext>())
+            //{
+            //    context.Database.EnsureCreated();
+            //}
 
             host.Run();
         }
